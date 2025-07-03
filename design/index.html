@@ -1,0 +1,644 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>My Webcrumbs Plugin</title><style>@import url(https://fonts.googleapis.com/css2?family=Lato&display=swap);
+@import url(https://fonts.googleapis.com/css2?family=Open+Sans&display=swap);
+@import url(https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200);
+
+/*! tailwindcss v3.4.11 | MIT License | https://tailwindcss.com*/
+*,
+:after,
+:before {
+  border: 0 solid #e5e7eb;
+  box-sizing: border-box;
+}
+:after,
+:before {
+  --tw-content: "";
+}
+:host,
+html {
+  line-height: 1.5;
+  -webkit-text-size-adjust: 100%;
+  font-family:
+    Open Sans,
+    ui-sans-serif,
+    system-ui,
+    sans-serif,
+    Apple Color Emoji,
+    Segoe UI Emoji,
+    Segoe UI Symbol,
+    Noto Color Emoji;
+  font-feature-settings: normal;
+  font-variation-settings: normal;
+  -moz-tab-size: 4;
+  tab-size: 4;
+  -webkit-tap-highlight-color: transparent;
+}
+body {
+  line-height: inherit;
+  margin: 0;
+}
+hr {
+  border-top-width: 1px;
+  color: inherit;
+  height: 0;
+}
+abbr:where([title]) {
+  text-decoration: underline dotted;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: inherit;
+  font-weight: inherit;
+}
+a {
+  color: inherit;
+  text-decoration: inherit;
+}
+b,
+strong {
+  font-weight: bolder;
+}
+code,
+kbd,
+pre,
+samp {
+  font-family:
+    ui-monospace,
+    SFMono-Regular,
+    Menlo,
+    Monaco,
+    Consolas,
+    Liberation Mono,
+    Courier New,
+    monospace;
+  font-feature-settings: normal;
+  font-size: 1em;
+  font-variation-settings: normal;
+}
+small {
+  font-size: 80%;
+}
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+sub {
+  bottom: -0.25em;
+}
+sup {
+  top: -0.5em;
+}
+table {
+  border-collapse: collapse;
+  border-color: inherit;
+  text-indent: 0;
+}
+button,
+input,
+optgroup,
+select,
+textarea {
+  color: inherit;
+  font-family: inherit;
+  font-feature-settings: inherit;
+  font-size: 100%;
+  font-variation-settings: inherit;
+  font-weight: inherit;
+  letter-spacing: inherit;
+  line-height: inherit;
+  margin: 0;
+  padding: 0;
+}
+button,
+select {
+  text-transform: none;
+}
+button,
+input:where([type="button"]),
+input:where([type="reset"]),
+input:where([type="submit"]) {
+  -webkit-appearance: button;
+  background-color: transparent;
+  background-image: none;
+}
+:-moz-focusring {
+  outline: auto;
+}
+:-moz-ui-invalid {
+  box-shadow: none;
+}
+progress {
+  vertical-align: baseline;
+}
+::-webkit-inner-spin-button,
+::-webkit-outer-spin-button {
+  height: auto;
+}
+[type="search"] {
+  -webkit-appearance: textfield;
+  outline-offset: -2px;
+}
+::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+::-webkit-file-upload-button {
+  -webkit-appearance: button;
+  font: inherit;
+}
+summary {
+  display: list-item;
+}
+blockquote,
+dd,
+dl,
+figure,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+hr,
+p,
+pre {
+  margin: 0;
+}
+fieldset {
+  margin: 0;
+}
+fieldset,
+legend {
+  padding: 0;
+}
+menu,
+ol,
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+dialog {
+  padding: 0;
+}
+textarea {
+  resize: vertical;
+}
+input::placeholder,
+textarea::placeholder {
+  color: #9ca3af;
+  opacity: 1;
+}
+[role="button"],
+button {
+  cursor: pointer;
+}
+:disabled {
+  cursor: default;
+}
+audio,
+canvas,
+embed,
+iframe,
+img,
+object,
+svg,
+video {
+  display: block;
+  vertical-align: middle;
+}
+img,
+video {
+  height: auto;
+  max-width: 100%;
+}
+[hidden] {
+  display: none;
+}
+*,
+:after,
+:before {
+  --tw-border-spacing-x: 0;
+  --tw-border-spacing-y: 0;
+  --tw-translate-x: 0;
+  --tw-translate-y: 0;
+  --tw-rotate: 0;
+  --tw-skew-x: 0;
+  --tw-skew-y: 0;
+  --tw-scale-x: 1;
+  --tw-scale-y: 1;
+  --tw-pan-x: ;
+  --tw-pan-y: ;
+  --tw-pinch-zoom: ;
+  --tw-scroll-snap-strictness: proximity;
+  --tw-gradient-from-position: ;
+  --tw-gradient-via-position: ;
+  --tw-gradient-to-position: ;
+  --tw-ordinal: ;
+  --tw-slashed-zero: ;
+  --tw-numeric-figure: ;
+  --tw-numeric-spacing: ;
+  --tw-numeric-fraction: ;
+  --tw-ring-inset: ;
+  --tw-ring-offset-width: 0px;
+  --tw-ring-offset-color: #fff;
+  --tw-ring-color: rgba(59, 130, 246, 0.5);
+  --tw-ring-offset-shadow: 0 0 #0000;
+  --tw-ring-shadow: 0 0 #0000;
+  --tw-shadow: 0 0 #0000;
+  --tw-shadow-colored: 0 0 #0000;
+  --tw-blur: ;
+  --tw-brightness: ;
+  --tw-contrast: ;
+  --tw-grayscale: ;
+  --tw-hue-rotate: ;
+  --tw-invert: ;
+  --tw-saturate: ;
+  --tw-sepia: ;
+  --tw-drop-shadow: ;
+  --tw-backdrop-blur: ;
+  --tw-backdrop-brightness: ;
+  --tw-backdrop-contrast: ;
+  --tw-backdrop-grayscale: ;
+  --tw-backdrop-hue-rotate: ;
+  --tw-backdrop-invert: ;
+  --tw-backdrop-opacity: ;
+  --tw-backdrop-saturate: ;
+  --tw-backdrop-sepia: ;
+  --tw-contain-size: ;
+  --tw-contain-layout: ;
+  --tw-contain-paint: ;
+  --tw-contain-style: ;
+}
+::backdrop {
+  --tw-border-spacing-x: 0;
+  --tw-border-spacing-y: 0;
+  --tw-translate-x: 0;
+  --tw-translate-y: 0;
+  --tw-rotate: 0;
+  --tw-skew-x: 0;
+  --tw-skew-y: 0;
+  --tw-scale-x: 1;
+  --tw-scale-y: 1;
+  --tw-pan-x: ;
+  --tw-pan-y: ;
+  --tw-pinch-zoom: ;
+  --tw-scroll-snap-strictness: proximity;
+  --tw-gradient-from-position: ;
+  --tw-gradient-via-position: ;
+  --tw-gradient-to-position: ;
+  --tw-ordinal: ;
+  --tw-slashed-zero: ;
+  --tw-numeric-figure: ;
+  --tw-numeric-spacing: ;
+  --tw-numeric-fraction: ;
+  --tw-ring-inset: ;
+  --tw-ring-offset-width: 0px;
+  --tw-ring-offset-color: #fff;
+  --tw-ring-color: rgba(59, 130, 246, 0.5);
+  --tw-ring-offset-shadow: 0 0 #0000;
+  --tw-ring-shadow: 0 0 #0000;
+  --tw-shadow: 0 0 #0000;
+  --tw-shadow-colored: 0 0 #0000;
+  --tw-blur: ;
+  --tw-brightness: ;
+  --tw-contrast: ;
+  --tw-grayscale: ;
+  --tw-hue-rotate: ;
+  --tw-invert: ;
+  --tw-saturate: ;
+  --tw-sepia: ;
+  --tw-drop-shadow: ;
+  --tw-backdrop-blur: ;
+  --tw-backdrop-brightness: ;
+  --tw-backdrop-contrast: ;
+  --tw-backdrop-grayscale: ;
+  --tw-backdrop-hue-rotate: ;
+  --tw-backdrop-invert: ;
+  --tw-backdrop-opacity: ;
+  --tw-backdrop-saturate: ;
+  --tw-backdrop-sepia: ;
+  --tw-contain-size: ;
+  --tw-contain-layout: ;
+  --tw-contain-paint: ;
+  --tw-contain-style: ;
+}
+#webcrumbs .absolute {
+  position: absolute;
+}
+#webcrumbs .relative {
+  position: relative;
+}
+#webcrumbs .-right-1 {
+  right: -4px;
+}
+#webcrumbs .-top-1 {
+  top: -4px;
+}
+#webcrumbs .mx-auto {
+  margin-left: auto;
+  margin-right: auto;
+}
+#webcrumbs .mb-2 {
+  margin-bottom: 8px;
+}
+#webcrumbs .mb-3 {
+  margin-bottom: 12px;
+}
+#webcrumbs .mb-4 {
+  margin-bottom: 16px;
+}
+#webcrumbs .mb-6 {
+  margin-bottom: 24px;
+}
+#webcrumbs .mr-1 {
+  margin-right: 4px;
+}
+#webcrumbs .mr-2 {
+  margin-right: 8px;
+}
+#webcrumbs .mt-1 {
+  margin-top: 4px;
+}
+#webcrumbs .flex {
+  display: flex;
+}
+#webcrumbs .grid {
+  display: grid;
+}
+#webcrumbs .h-1\.5 {
+  height: 6px;
+}
+#webcrumbs .h-20 {
+  height: 80px;
+}
+#webcrumbs .h-6 {
+  height: 24px;
+}
+#webcrumbs .h-\[400px\] {
+  height: 400px;
+}
+#webcrumbs .w-20 {
+  width: 80px;
+}
+#webcrumbs .w-3\/4 {
+  width: 75%;
+}
+#webcrumbs .w-6 {
+  width: 24px;
+}
+#webcrumbs .w-full {
+  width: 100%;
+}
+#webcrumbs .max-w-6xl {
+  max-width: 72rem;
+}
+#webcrumbs .grid-cols-1 {
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+}
+#webcrumbs .flex-row {
+  flex-direction: row;
+}
+#webcrumbs .items-center {
+  align-items: center;
+}
+#webcrumbs .justify-center {
+  justify-content: center;
+}
+#webcrumbs .justify-between {
+  justify-content: space-between;
+}
+#webcrumbs .gap-4 {
+  gap: 16px;
+}
+#webcrumbs :is(.space-x-1 > :not([hidden]) ~ :not([hidden])) {
+  --tw-space-x-reverse: 0;
+  margin-left: calc(4px * (1 - var(--tw-space-x-reverse)));
+  margin-right: calc(4px * var(--tw-space-x-reverse));
+}
+#webcrumbs :is(.space-x-2 > :not([hidden]) ~ :not([hidden])) {
+  --tw-space-x-reverse: 0;
+  margin-left: calc(8px * (1 - var(--tw-space-x-reverse)));
+  margin-right: calc(8px * var(--tw-space-x-reverse));
+}
+#webcrumbs :is(.space-y-1\.5 > :not([hidden]) ~ :not([hidden])) {
+  --tw-space-y-reverse: 0;
+  margin-bottom: calc(6px * var(--tw-space-y-reverse));
+  margin-top: calc(6px * (1 - var(--tw-space-y-reverse)));
+}
+#webcrumbs :is(.space-y-3 > :not([hidden]) ~ :not([hidden])) {
+  --tw-space-y-reverse: 0;
+  margin-bottom: calc(12px * var(--tw-space-y-reverse));
+  margin-top: calc(12px * (1 - var(--tw-space-y-reverse)));
+}
+#webcrumbs :is(.space-y-4 > :not([hidden]) ~ :not([hidden])) {
+  --tw-space-y-reverse: 0;
+  margin-bottom: calc(16px * var(--tw-space-y-reverse));
+  margin-top: calc(16px * (1 - var(--tw-space-y-reverse)));
+}
+#webcrumbs .overflow-auto {
+  overflow: auto;
+}
+#webcrumbs .rounded {
+  border-radius: 12px;
+}
+#webcrumbs .rounded-3xl {
+  border-radius: 72px;
+}
+#webcrumbs .rounded-full {
+  border-radius: 9999px;
+}
+#webcrumbs .rounded-lg {
+  border-radius: 24px;
+}
+#webcrumbs .border {
+  border-width: 1px;
+}
+#webcrumbs .border-dashed {
+  border-style: dashed;
+}
+#webcrumbs .border-gray-200 {
+  --tw-border-opacity: 1;
+  border-color: rgb(229 231 235 / var(--tw-border-opacity));
+}
+#webcrumbs .border-gray-300 {
+  --tw-border-opacity: 1;
+  border-color: rgb(209 213 219 / var(--tw-border-opacity));
+}
+#webcrumbs .border-gray-800 {
+  --tw-border-opacity: 1;
+  border-color: rgb(31 41 55 / var(--tw-border-opacity));
+}
+#webcrumbs .border-red-300 {
+  --tw-border-opacity: 1;
+  border-color: rgb(252 165 165 / var(--tw-border-opacity));
+}
+#webcrumbs .bg-blue-100 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(219 234 254 / var(--tw-bg-opacity));
+}
+#webcrumbs .bg-blue-50 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(239 246 255 / var(--tw-bg-opacity));
+}
+#webcrumbs .bg-gray-50 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(249 250 251 / var(--tw-bg-opacity));
+}
+#webcrumbs .bg-green-500 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(34 197 94 / var(--tw-bg-opacity));
+}
+#webcrumbs .bg-purple-100 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(243 232 255 / var(--tw-bg-opacity));
+}
+#webcrumbs .bg-purple-500 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(168 85 247 / var(--tw-bg-opacity));
+}
+#webcrumbs .bg-red-100 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(254 226 226 / var(--tw-bg-opacity));
+}
+#webcrumbs .bg-red-50 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(254 242 242 / var(--tw-bg-opacity));
+}
+#webcrumbs .bg-white {
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+}
+#webcrumbs .bg-yellow-100 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(254 249 195 / var(--tw-bg-opacity));
+}
+#webcrumbs .bg-yellow-50 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(254 252 232 / var(--tw-bg-opacity));
+}
+#webcrumbs .p-2 {
+  padding: 8px;
+}
+#webcrumbs .p-4 {
+  padding: 16px;
+}
+#webcrumbs .p-8 {
+  padding: 32px;
+}
+#webcrumbs .px-2 {
+  padding-left: 8px;
+  padding-right: 8px;
+}
+#webcrumbs .px-4 {
+  padding-left: 16px;
+  padding-right: 16px;
+}
+#webcrumbs .py-1\.5 {
+  padding-bottom: 6px;
+  padding-top: 6px;
+}
+#webcrumbs .pl-4 {
+  padding-left: 16px;
+}
+#webcrumbs .text-center {
+  text-align: center;
+}
+#webcrumbs .text-2xl {
+  font-size: 24px;
+  line-height: 31.200000000000003px;
+}
+#webcrumbs .text-lg {
+  font-size: 18px;
+  line-height: 27px;
+}
+#webcrumbs .text-sm {
+  font-size: 14px;
+  line-height: 21px;
+}
+#webcrumbs .text-xl {
+  font-size: 20px;
+  line-height: 28px;
+}
+#webcrumbs .text-xs {
+  font-size: 12px;
+  line-height: 19.200000000000003px;
+}
+#webcrumbs .font-bold {
+  font-weight: 700;
+}
+#webcrumbs .font-medium {
+  font-weight: 500;
+}
+#webcrumbs .font-semibold {
+  font-weight: 600;
+}
+#webcrumbs .text-blue-500 {
+  --tw-text-opacity: 1;
+  color: rgb(59 130 246 / var(--tw-text-opacity));
+}
+#webcrumbs .text-blue-700 {
+  --tw-text-opacity: 1;
+  color: rgb(29 78 216 / var(--tw-text-opacity));
+}
+#webcrumbs .text-gray-500 {
+  --tw-text-opacity: 1;
+  color: rgb(107 114 128 / var(--tw-text-opacity));
+}
+#webcrumbs .text-gray-600 {
+  --tw-text-opacity: 1;
+  color: rgb(75 85 99 / var(--tw-text-opacity));
+}
+#webcrumbs .text-gray-700 {
+  --tw-text-opacity: 1;
+  color: rgb(55 65 81 / var(--tw-text-opacity));
+}
+#webcrumbs .text-gray-800 {
+  --tw-text-opacity: 1;
+  color: rgb(31 41 55 / var(--tw-text-opacity));
+}
+#webcrumbs .text-green-500 {
+  --tw-text-opacity: 1;
+  color: rgb(34 197 94 / var(--tw-text-opacity));
+}
+#webcrumbs .text-purple-600 {
+  --tw-text-opacity: 1;
+  color: rgb(147 51 234 / var(--tw-text-opacity));
+}
+#webcrumbs .text-red-700 {
+  --tw-text-opacity: 1;
+  color: rgb(185 28 28 / var(--tw-text-opacity));
+}
+#webcrumbs .text-white {
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+#webcrumbs .text-yellow-500 {
+  --tw-text-opacity: 1;
+  color: rgb(234 179 8 / var(--tw-text-opacity));
+}
+#webcrumbs .text-yellow-700 {
+  --tw-text-opacity: 1;
+  color: rgb(161 98 7 / var(--tw-text-opacity));
+}
+#webcrumbs {
+  font-family: Open Sans !important;
+  font-size: 16px !important;
+}
+@media (min-width: 768px) {
+  #webcrumbs .md\:col-span-5 {
+    grid-column: span 5 / span 5;
+  }
+  #webcrumbs .md\:col-span-7 {
+    grid-column: span 7 / span 7;
+  }
+  #webcrumbs .md\:grid-cols-12 {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+  }
+}
+</style><link rel="manifest" href="/manifest.json"><link rel="icon" href="https://cdn.webcrumbs.org/assets/images/landing/favicon.ico" /><link rel="apple-touch-icon" sizes="192x192" href="https://cdn.webcrumbs.org/assets/images/landing/logo192.png" /><link rel="apple-touch-icon" sizes="512x512" href="https://cdn.webcrumbs.org/assets/images/landing/logo512.png" /><meta name="theme-color" content="#ffffff"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="apple-mobile-web-app-title" content="Webcrumbs"></head><body><div id="webcrumbs"><div class="bg-gray-50 p-8 rounded-3xl border border-gray-800 max-w-6xl mx-auto"> <div class="flex justify-between items-center mb-6"> <h1 class="text-lg font-medium">Resume Preview</h1> <div class="flex space-x-2"> <button class="bg-purple-500 text-white px-4 py-1.5 rounded-full text-sm flex items-center"> <span class="material-symbols-outlined text-sm mr-1">download</span> Download </button> <button class="border border-gray-300 bg-white px-4 py-1.5 rounded-full text-sm flex items-center"> <span class="material-symbols-outlined text-sm mr-1">print</span> Print </button> </div> </div> <div class="grid grid-cols-1 md:grid-cols-12 gap-4"> <div class="md:col-span-7 bg-white p-4 rounded-lg border border-gray-200 overflow-auto h-[400px]"> <div class="text-xs text-gray-600 mb-4 flex justify-between"> <span>Page 1 of 2</span> <div class="flex space-x-1"> <span class="material-symbols-outlined text-sm">zoom_out</span> <span class="material-symbols-outlined text-sm">zoom_in</span> </div> </div> <div class="text-center mb-4"> <h2 class="text-xl font-semibold text-gray-800">John Anderson</h2> <p class="text-sm text-gray-600">Senior Software Engineer</p> <p class="text-xs text-gray-500 mt-1">john.anderson@email.com | +1 (555) 123-4567</p> <p class="text-xs text-gray-500">San Francisco, CA | linkedin.com/in/johnanderson</p> </div> <div class="mb-4"> <h3 class="font-semibold mb-2">Professional Summary</h3> <p class="text-sm text-gray-700"> Experienced software engineer with 7+ years developing scalable web applications. Proficient in Backend, React, Node.js, and cloud technologies. Strong background in agile methodologies and team leadership. </p> </div> <div class="mb-4"> <h3 class="font-semibold mb-2">Experience</h3> <div class="mb-3"> <p class="text-sm font-semibold">Senior Software Engineer</p> <p class="text-xs text-gray-500">TechCorp Inc. | 2020 - Present</p> <ul class="text-xs text-gray-700 pl-4 mt-1"> <li>• Led development of microservice architecture serving 1M+ users</li> <li>• Implemented CI/CD pipelines reducing deployment time by 40%</li> <li>• Mentored junior developers and conducted code reviews</li> </ul> </div> <div> <p class="text-sm font-semibold">Software Engineer</p> <p class="text-xs text-gray-500">StartupXYZ | 2018 - 2020</p> <ul class="text-xs text-gray-700 pl-4 mt-1"> <li>• Developed React-based dashboard increasing user engagement by 40%</li> <li>• Optimized database queries improving application performance</li> </ul> </div> </div> <div> <h3 class="font-semibold mb-2">Skills</h3> </div> </div> <div class="md:col-span-5 space-y-4"> <div class="border border-dashed border-red-300 rounded-lg p-4 bg-white relative"> <div class="flex items-center mb-2"> <span class="material-symbols-outlined text-purple-600 mr-2">analytics</span> <h3 class="font-medium">Skill Gap Analysis</h3> </div> <div class="space-y-3"> <div class="bg-red-50 rounded p-2"> <div class="flex justify-between"> <span class="text-sm">Machine Learning</span> <span class="text-xs bg-red-100 text-red-700 px-2 rounded">Critical</span> </div> <p class="text-xs text-gray-600">Required for 30% of similar positions.</p> </div> <div class="bg-yellow-50 rounded p-2"> <div class="flex justify-between"> <span class="text-sm">Kubernetes</span> <span class="text-xs bg-yellow-100 text-yellow-700 px-2 rounded">Medium</span> </div> <p class="text-xs text-gray-600">Required for 40% of similar positions.</p> </div> <div class="bg-blue-50 rounded p-2"> <div class="flex justify-between"> <span class="text-sm">GraphQL</span> <span class="text-xs bg-blue-100 text-blue-700 px-2 rounded">Low</span> </div> <p class="text-xs text-gray-600">Required for 30% of similar positions.</p> </div> </div> </div> <div class="bg-white rounded-lg p-4 border border-gray-200"> <div class="flex items-center mb-3"> <span class="material-symbols-outlined text-purple-600 mr-2">speed</span> <h3 class="font-medium">ATS Score</h3> </div> <div class="flex justify-center mb-2"> <div class="relative"> <div class="w-20 h-20 rounded-full bg-purple-500 flex items-center justify-center text-white text-2xl font-bold"> 78 </div> <div class="absolute -top-1 -right-1 bg-green-500 text-white w-6 h-6 rounded-full flex items-center justify-center"> <span class="material-symbols-outlined text-sm">check</span> </div> </div> </div> <p class="text-center text-sm mb-2">Good score - Above average</p> <div class="w-full bg-purple-100 rounded-full h-1.5 mb-4"> <div class="bg-purple-500 h-1.5 rounded-full w-3/4"></div> </div> <div class="space-y-1.5 text-sm"> <div class="flex justify-between"> <span>Keywords Match</span> <span class="text-green-500">82%</span> </div> <div class="flex justify-between"> <span>Format Score</span> <span class="text-blue-500">90%</span> </div> <div class="flex justify-between"> <span>Content Quality</span> <span class="text-yellow-500">68%</span> </div> </div> </div> <div class="bg-white rounded-lg p-4 border border-gray-200"> <div class="flex items-center"> <span class="material-symbols-outlined text-purple-600 mr-2">smart_toy</span> <h3 class="font-medium">AI Resume Assistant</h3> </div>  </div> </div> </div> </div></div> </body></html>
