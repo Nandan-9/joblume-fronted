@@ -119,6 +119,7 @@ export class ResumeService {
     // Check if resume data is stored in a 'resume' property (from signup)
     if (user.resume) {
       const resumeData = {
+        name: user.resume.name || '',
         about: user.resume.about || '',
         education: user.resume.education || [],
         skills: user.resume.skills || '',
@@ -136,6 +137,7 @@ export class ResumeService {
 
     // Fallback to direct properties (for updated user data)
     const resumeData = {
+      name: user.name || '',
       about: user.about || '',
       education: user.education || [],
       skills: user.skills || '',
@@ -157,6 +159,7 @@ export class ResumeService {
     if (!hasData) {
       console.warn('No resume data found for user, using sample data for testing');
       const sampleResumeData = {
+        name: "John Doe",
         about: "Experienced software engineer with 4 years of experience in web development and cloud technologies.",
         education: [
           {
@@ -493,4 +496,4 @@ export class ResumeService {
       };
     }
   }
-} 
+}

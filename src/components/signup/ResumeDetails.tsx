@@ -7,6 +7,7 @@ import { Education, Project, WorkExperience } from '@/types/auth';
 
 interface ResumeDetailsProps {
   formData: {
+    name: string;
     about: string;
     education: Education[];
     skills: string;
@@ -51,6 +52,20 @@ export default function ResumeDetails({
   return (
     <div className="space-y-6">
       <h2 className="text-xl font-semibold text-gray-900 mb-4">Resume Information</h2>
+      
+      <div>
+        <label htmlFor="name" className="block text-sm font-medium text-gray-700">
+          Full Name
+        </label>
+        <input
+          type="text"
+          id="name"
+          value={formData.name}
+          onChange={(e) => onInputChange('name', e.target.value)}
+          placeholder="Enter your full name"
+          className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+        />
+      </div>
       
       <div>
         <label htmlFor="about" className="block text-sm font-medium text-gray-700">
@@ -143,4 +158,4 @@ export default function ResumeDetails({
       </div>
     </div>
   );
-} 
+}
