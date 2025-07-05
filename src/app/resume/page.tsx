@@ -9,8 +9,30 @@ import { ResumeService } from '@/lib/resumeService';
 import { useState, useEffect } from 'react';
 import AuthGuard from '@/components/AuthGuard';
 import { ResumeFieldFiller } from '@/lib/resumeFieldFiller';
-
 import { RawDataDisplay } from '@/components/RawDataDisplay';
+
+type Suggestion = [string, string];
+
+const getRandomSuggestions = (): Suggestion[] => {
+  const shuffled = [...RESUME_SUGGESTIONS].sort(() => 0.5 - Math.random());
+  return shuffled.slice(0, 3) as Suggestion[];
+};
+
+const RESUME_SUGGESTIONS: Suggestion[] = [
+  ["Add metrics", "Quantify your achievements"],
+  ["Use strong action verbs", "Start each bullet point with powerful verbs"],
+  ["Match tools to JD", "Include relevant tools and technologies from the job description"],
+  ["Tailor your summary", "Customize your resume summary to match the target job role"],
+  ["Prioritize relevance", "Order sections and experiences based on impact"],
+  ["Group similar projects", "Combine academic and personal projects under one unified section"],
+  ["Ensure consistent formatting", "Use uniform font sizes, bullet styles, date formats, and spacing"],
+  ["Be concise", "Keep the resume ideally one page (especially for students and freshers)"],
+  ["Use clear section titles", "Label sections clearly for quick readability"],
+  ["Include soft skills and domain keywords", "Add important keywords that match both technical and interpersonal abilities"],
+  ["Highlight outcomes in descriptions", "Show what you achieved, not just what you did"],
+  ["Add GitHub or portfolio links", "Provide proof of your work via external links"],
+  ["Avoid redundancy and clutter", "Don't repeat the same skills or use long, unnecessary intros"]
+];
 
 interface ChatMessage {
   role: 'user' | 'assistant';
@@ -38,7 +60,7 @@ export default function ResumePage() {
   const [atsScore, setAtsScore] = useState<any>(null);
   const [atsScoreLoading, setAtsScoreLoading] = useState(false);
   const [atsScoreError, setAtsScoreError] = useState<string>('');
-  const [feedback, setFeedback] = useState<string[]>([]);
+  const [feedback, setFeedback] = useState<Suggestion[]>([]);
   const [feedbackLoading, setFeedbackLoading] = useState(false);
   const [feedbackError, setFeedbackError] = useState<string>('');
   const [chatHistory, setChatHistory] = useState<ChatMessage[]>([
@@ -139,15 +161,22 @@ export default function ResumePage() {
     try {
       const response = await ResumeService.getFeedback(jobDescription, resumeData);
       
-      if (response.success) {
+      if (response.success && Array.isArray(response.feedback)) {
         console.log('Feedback Raw Data:', response.feedback);
-        setFeedback(response.feedback || []);
+        // Convert string array to Suggestion array if needed
+        const formattedFeedback = response.feedback.map((text): Suggestion => {
+          const parts = text.split(':');
+          return parts.length > 1 ? [parts[0].trim(), parts[1].trim()] : [text, ''];
+        });
+        setFeedback(formattedFeedback.length > 0 ? formattedFeedback : getRandomSuggestions());
       } else {
-        setFeedbackError(response.message || 'Failed to fetch feedback');
+        // If API call fails or response is invalid, use random suggestions
+        setFeedback(getRandomSuggestions());
       }
     } catch (error) {
       console.error('Error fetching feedback:', error);
-      setFeedbackError('An error occurred while fetching feedback');
+      // If error occurs, use random suggestions
+      setFeedback(getRandomSuggestions());
     } finally {
       setFeedbackLoading(false);
     }
@@ -530,21 +559,21 @@ export default function ResumePage() {
                       <div className="space-y-3">
                         {feedback.map((item, index) => (
                           <div key={index} className="bg-blue-50 border border-blue-200 rounded p-3">
-                            <p className="text-sm text-gray-800">{item}</p>
+                            <p className="text-sm text-gray-800">
+                              <span className="font-bold">{item[0]}</span>: {item[1]}
+                            </p>
                           </div>
                         ))}
                       </div>
                     ) : (
                       <div className="space-y-3">
-                        <div className="bg-blue-50 border border-blue-200 rounded p-3">
-                          <p className="text-sm text-gray-800">Consider adding more specific metrics to quantify your achievements.</p>
-                        </div>
-                        <div className="bg-blue-50 border border-blue-200 rounded p-3">
-                          <p className="text-sm text-gray-800">Use stronger action verbs at the beginning of each bullet point.</p>
-                        </div>
-                        <div className="bg-blue-50 border border-blue-200 rounded p-3">
-                          <p className="text-sm text-gray-800">Include relevant technologies and tools mentioned in the job description.</p>
-                        </div>
+                        {getRandomSuggestions().map((item, index) => (
+                          <div key={index} className="bg-blue-50 border border-blue-200 rounded p-3">
+                            <p className="text-sm text-gray-800">
+                              <span className="font-bold">{item[0]}</span>: {item[1]}
+                            </p>
+                          </div>
+                        ))}
                       </div>
                     )}
                   </div>
