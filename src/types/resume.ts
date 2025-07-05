@@ -13,4 +13,12 @@ export interface ResumeData {
   linkedin?: string;
   github?: string;
   portfolio?: string;
-} 
+}
+
+export interface ResumeVersion {
+  id: string;
+  jobTitle: string;
+  generatedDate: string;
+  versionDate: string;
+  resumeData: ResumeData;
+}

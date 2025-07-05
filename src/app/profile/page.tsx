@@ -5,8 +5,10 @@ import { useRouter } from 'next/navigation';
 import Header from '@/components/Header';
 import Resume from '@/components/Resume';
 import EditProfileForm from '@/components/EditProfileForm';
-import { ResumeData } from '@/types/resume';
+import { ResumeData, ResumeVersion } from '@/types/resume';
 import { User } from '@/types/auth';
+import { ResumeService } from '@/lib/resumeService';
+import VersionModal from '@/components/VersionModal';
 import AuthGuard from '@/components/AuthGuard';
 import { 
   UserCircleIcon, 
@@ -23,25 +25,9 @@ export default function ProfilePage() {
   const [isLoading, setIsLoading] = useState(true);
   const [activeTab, setActiveTab] = useState<'profile' | 'resume'>('profile');
   const [showEditForm, setShowEditForm] = useState(false);
-
-  useEffect(() => {
-    // Check if user is authenticated
-    const isAuthenticated = localStorage.getItem('isAuthenticated');
-    if (!isAuthenticated) {
-      router.push('/login');
-      return;
-    }
-
-    // Get user data from localStorage
-    const storedUser = localStorage.getItem('user');
-    if (storedUser) {
-      const userData = JSON.parse(storedUser);
-      setUser(userData);
-      setResumeData(userData.resume);
-    }
-    
-    setIsLoading(false);
-  }, [router]);
+  const [versions, setVersions] = useState<ResumeVersion[]>([]);
+  const [selectedVersion, setSelectedVersion] = useState<ResumeVersion | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleLogout = () => {
     localStorage.removeItem('user');
@@ -64,6 +50,53 @@ export default function ProfilePage() {
     // In a real app, this would navigate to an edit resume page
     alert('Edit resume functionality would be implemented here');
   };
+
+  const handleVersionClick = (version: ResumeVersion) => {
+    setSelectedVersion(version);
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+    setSelectedVersion(null);
+  };
+
+  const handleDownloadPDF = (version: ResumeVersion) => {
+    // Here you would generate the PDF from version.resumeData
+    alert('PDF download functionality would be implemented here');
+  };
+
+  // Combined useEffect hook for initialization and data fetching
+  useEffect(() => {
+    // Check if user is authenticated
+    const isAuthenticated = localStorage.getItem('isAuthenticated');
+    if (!isAuthenticated) {
+      router.push('/login');
+      return;
+    }
+
+    // Get user data from localStorage
+    const storedUser = localStorage.getItem('user');
+    if (storedUser) {
+      const userData = JSON.parse(storedUser);
+      setUser(userData);
+      setResumeData(userData.resume);
+
+      // Fetch resume versions
+      const fetchVersions = async () => {
+        try {
+          const versions = await ResumeService.getVersions(userData.firstName);
+          setVersions(versions);
+        } catch (error) {
+          console.error('Error fetching versions:', error);
+        }
+      };
+
+      fetchVersions();
+    }
+    
+    setIsLoading(false);
+  }, [router]);
 
   if (isLoading) {
     return (
@@ -310,8 +343,45 @@ export default function ProfilePage() {
             <Resume data={resumeData} />
           </div>
         )}
+
+        {/* Resume Versions */}
+        <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6 mt-6">
+          <h3 className="text-lg font-semibold text-gray-900 mb-4">Resume Versions</h3>
+          <div className="space-y-3">
+            {versions.map((version) => (
+              <div 
+                key={version.id}
+                className="flex justify-between items-center p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors"
+              >
+                <div>
+                  <p className="font-medium">{version.jobTitle}</p>
+                  <p className="text-sm text-gray-600">Generated: {version.generatedDate}</p>
+                </div>
+                <div className="flex space-x-3">
+                  <button
+                    onClick={() => handleVersionClick(version)}
+                    className="px-3 py-1 text-sm text-blue-600 hover:text-blue-700"
+                  >
+                    View
+                  </button>
+                  <button
+                    onClick={() => handleDownloadPDF(version)}
+                    className="px-3 py-1 text-sm text-gray-600 hover:text-gray-700"
+                  >
+                    Download PDF
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
     </div>
+
+    {/* Version Modal */}
+    {isModalOpen && selectedVersion && (
+      <VersionModal version={selectedVersion} onClose={handleCloseModal} />
+    )}
 
     {/* Edit Profile Modal */}
     {showEditForm && user && (
@@ -323,4 +393,4 @@ export default function ProfilePage() {
     )}
     </AuthGuard>
   );
-} 
+}
