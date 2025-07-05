@@ -488,28 +488,28 @@ export default function ResumePage() {
                       <div className="text-center">
                         <div className="relative inline-block mb-4">
                           <div className="w-20 h-20 rounded-full flex items-center justify-center text-white text-2xl font-bold bg-yellow-500">
-                            72
+                            58
                           </div>
-                          <div className="absolute -top-1 -right-1 bg-green-500 text-white w-6 h-6 rounded-full flex items-center justify-center">
-                            <span className="material-symbols-outlined text-sm">check</span>
+                          <div className="absolute -top-1 -right-1 bg-yellow-600 text-white w-6 h-6 rounded-full flex items-center justify-center">
+                            <span className="material-symbols-outlined text-sm">trending_up</span>
                           </div>
                         </div>
-                        <p className="text-center text-sm mb-2">Good score - Above average</p>
+                        <p className="text-center text-sm mb-2">Moderate - Room for improvement</p>
                         <div className="w-full bg-purple-100 rounded-full h-1.5 mb-4">
-                          <div className="h-1.5 rounded-full bg-yellow-500" style={{ width: '72%' }}></div>
+                          <div className="h-1.5 rounded-full bg-yellow-500" style={{ width: '58%' }}></div>
                         </div>
                         <div className="grid grid-cols-3 gap-4 text-sm">
                           <div>
                             <p className="text-gray-600">Keyword Match</p>
-                            <p className="font-semibold text-yellow-600">75%</p>
+                            <p className="font-semibold text-yellow-600">65%</p>
                           </div>
                           <div>
                             <p className="text-gray-600">Format Score</p>
-                            <p className="font-semibold text-yellow-600">80%</p>
+                            <p className="font-semibold text-yellow-600">70%</p>
                           </div>
                           <div>
                             <p className="text-gray-600">Content Quality</p>
-                            <p className="font-semibold text-yellow-600">65%</p>
+                            <p className="font-semibold text-yellow-600">45%</p>
                           </div>
                         </div>
                       </div>
