@@ -1,5 +1,6 @@
 import { Job } from '@/types/job';
 import { StarIcon, MapPinIcon, ClockIcon, CurrencyDollarIcon } from '@heroicons/react/24/solid';
+import Link from 'next/link';
 
 interface JobCardProps {
   job: Job;
@@ -32,7 +33,8 @@ export default function JobCard({ job }: JobCardProps) {
   };
 
   return (
-    <div className="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-shadow duration-200">
+    <Link href={`/jobs/${job.id}`} className="block">
+      <div className="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-shadow duration-200">
       <div className="flex items-start justify-between">
         <div className="flex items-start space-x-4 flex-1">
           {/* Company Logo */}
@@ -110,6 +112,7 @@ export default function JobCard({ job }: JobCardProps) {
           </button>
         </div>
       </div>
-    </div>
+      </div>
+    </Link>
   );
 } 
